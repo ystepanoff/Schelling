@@ -2,10 +2,10 @@
 
 ## Installing dependencies
 ```bash
-	make
+make
 ```
 
 ## Running the simulation
 ```bash
-	python3 run.py
+python3 run.py
 ```
