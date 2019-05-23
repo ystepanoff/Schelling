@@ -23,9 +23,5 @@ def run(test, *args):
     simulation.run(n, sizes, rules)
 
 
-#run(two_agents, 50.0, 50.0)
-#run(two_agents, 60.0, 60.0)
-# run(three_agents)
-
 if __name__ == '__main__':
     run(two_agents, 50.0, 50.0)
