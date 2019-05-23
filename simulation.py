@@ -56,6 +56,7 @@ def make_step(frame, image, types, grid, rules):
     if no_choice(unhappy):
         print('Nowhere to go!')
         return None
+
     if len(unhappy) > 0:
         x, y = random.choice(unhappy)
         available = find_positions(grid, x, y, types, rules)
@@ -65,6 +66,7 @@ def make_step(frame, image, types, grid, rules):
         newx, newy = random.choice(available)
         grid[newx][newy] = grid[x][y]
         grid[x][y] = 0
+
     image.set_data(grid)
     return image
 
@@ -92,6 +94,7 @@ def make_step_simultaneously(frame, image, types, grid, rules):
             grid_next[newx][newy] = grid[x][y]
             grid_next[x][y] = 0
     grid[:] = grid_next[:]
+
     image.set_data(grid)
     return image
 
@@ -115,8 +118,8 @@ def run(n, sizes, rules, video_file=None):
     plot.axis('off')
 
     image = ax.imshow(grid, interpolation='nearest')
-    ani = animation.FuncAnimation(fig, make_step_simultaneously, frames=1000,
-                                  fargs=(image, types, grid, rules), interval=1000)
+    ani = animation.FuncAnimation(fig, make_step, frames=1000,
+                                  fargs=(image, types, grid, rules), interval=10)
 
     if video_file:
         ani.save(mov_file, writer=animation.FFMpegWriter(fps=60))
